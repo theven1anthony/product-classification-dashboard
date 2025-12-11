@@ -180,11 +180,13 @@ if model is not None and config is not None:
                 lambda x: x.split('>>')[0].replace('["', "").strip()
             )
 
+            # Filtrer pour ne garder que les images présentes dans le dossier
             cat_images = df[df["category"] == selected_cat]["image"].tolist()
+            cat_images = [img for img in cat_images if (IMAGES_DIR / img).exists()]
 
             selected_img = st.selectbox(
                 "Image :",
-                options=cat_images[:20],  # Limiter à 20 pour la performance
+                options=cat_images,
                 help="Sélectionnez une image"
             )
 
