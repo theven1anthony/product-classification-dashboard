@@ -13,12 +13,11 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# CSS personnalisé pour accessibilité WCAG
+# CSS personnalisé pour accessibilité WCAG (compatible thème clair/sombre)
 st.markdown("""
 <style>
-    /* Contraste amélioré WCAG AA */
+    /* Taille de texte accessible */
     .stMarkdown p, .stMarkdown li {
-        color: #1a1a1a;
         font-size: 1rem;
         line-height: 1.6;
     }
@@ -29,35 +28,14 @@ st.markdown("""
         outline-offset: 2px;
     }
 
-    /* Titres accessibles */
-    h1, h2, h3 {
-        color: #0d1117;
-    }
-
-    /* Liens avec contraste suffisant */
+    /* Liens avec soulignement */
     a {
-        color: #0066cc;
         text-decoration: underline;
     }
 
     /* Boutons avec contraste */
     .stButton > button {
-        background-color: #0066cc;
-        color: white;
         font-weight: 600;
-    }
-
-    .stButton > button:hover {
-        background-color: #004d99;
-    }
-
-    /* Cards avec bordures visibles */
-    .metric-card {
-        background-color: #f8f9fa;
-        border: 2px solid #dee2e6;
-        border-radius: 8px;
-        padding: 1rem;
-        margin: 0.5rem 0;
     }
 
     /* Classe pour lecteurs d'écran uniquement (WCAG 1.1.1) */
@@ -75,21 +53,20 @@ st.markdown("""
 
     /* Style pour les détails/descriptions accessibles */
     details {
-        background-color: #f0f2f6;
-        border: 1px solid #e0e0e0;
+        border: 1px solid currentColor;
         border-radius: 4px;
         padding: 0.5rem;
         margin: 0.5rem 0;
         font-size: 0.9rem;
+        opacity: 0.9;
     }
 
     details summary {
         cursor: pointer;
-        color: #0066cc;
+        font-weight: 600;
     }
 
     details p, details li {
-        color: #333;
         margin: 0.25rem 0;
     }
 </style>
@@ -245,13 +222,5 @@ with st.expander("Conformité WCAG - Critères d'accessibilité respectés"):
 
 # Footer
 st.markdown("---")
-st.markdown("""
-<div style="text-align: center; color: #666; font-size: 0.9rem;">
-    <p>Développé dans le cadre de la formation Ingénieur IA - OpenClassrooms</p>
-    <p>Modèle ConvNeXt-Tiny basé sur l'article :
-    <a href="https://arxiv.org/abs/2201.03545" target="_blank" rel="noopener"
-       aria-label="Lien vers l'article ConvNeXt sur ArXiv (s'ouvre dans un nouvel onglet)">
-       A ConvNet for the 2020s (Liu et al., 2022)
-    </a></p>
-</div>
-""", unsafe_allow_html=True)
+st.caption("Développé dans le cadre de la formation Ingénieur IA - OpenClassrooms")
+st.caption("Modèle ConvNeXt-Tiny basé sur l'article : [A ConvNet for the 2020s (Liu et al., 2022)](https://arxiv.org/abs/2201.03545)")
