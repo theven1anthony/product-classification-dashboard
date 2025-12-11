@@ -1,0 +1,21 @@
+{
+  "model_path": "./outputs/convnext_model_dashboard.keras",
+  "encoder_path": "./outputs/label_encoder.pkl",
+  "img_size": [
+    224,
+    224
+  ],
+  "class_names": [
+    "Baby Care",
+    "Beauty and Personal Care",
+    "Computers",
+    "Home Decor & Festive Needs",
+    "Home Furnishing",
+    "Kitchen & Dining",
+    "Watches"
+  ],
+  "num_classes": 7,
+  "model_name": "ConvNeXt-Tiny",
+  "accuracy": 0.8571428656578064,
+  "preprocessing": "convnext"
+}
