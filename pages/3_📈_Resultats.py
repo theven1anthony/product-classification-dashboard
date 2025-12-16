@@ -165,12 +165,16 @@ col1, col2 = st.columns(2)
 
 with col1:
     # Graphique Accuracy
+    # Couleurs WCAG conformes (ratio contraste >= 4.5:1 sur fond blanc)
+    COLOR_VGG16 = '#0055a4'  # Bleu foncé accessible
+    COLOR_CONVNEXT = '#0d7a3c'  # Vert foncé accessible
+
     fig_acc = go.Figure(data=[
         go.Bar(
             name='VGG16 (2014)',
             x=['Test Accuracy'],
             y=[results['vgg16']['accuracy'] * 100],
-            marker_color='#3498db',
+            marker_color=COLOR_VGG16,
             text=[f"{results['vgg16']['accuracy']*100:.2f}%"],
             textposition='outside'
         ),
@@ -178,7 +182,7 @@ with col1:
             name='ConvNeXt-Tiny (2022)',
             x=['Test Accuracy'],
             y=[results['convnext']['accuracy'] * 100],
-            marker_color='#2ecc71',
+            marker_color=COLOR_CONVNEXT,
             text=[f"{results['convnext']['accuracy']*100:.2f}%"],
             textposition='outside'
         )
@@ -209,7 +213,7 @@ with col2:
             name='VGG16 (2014)',
             x=['Test Loss'],
             y=[results['vgg16']['loss']],
-            marker_color='#3498db',
+            marker_color=COLOR_VGG16,
             text=[f"{results['vgg16']['loss']:.4f}"],
             textposition='outside'
         ),
@@ -217,7 +221,7 @@ with col2:
             name='ConvNeXt-Tiny (2022)',
             x=['Test Loss'],
             y=[results['convnext']['loss']],
-            marker_color='#2ecc71',
+            marker_color=COLOR_CONVNEXT,
             text=[f"{results['convnext']['loss']:.4f}"],
             textposition='outside'
         )
@@ -248,7 +252,7 @@ with col1:
         go.Bar(
             x=['VGG16', 'ConvNeXt-Tiny'],
             y=[results['vgg16']['time_seconds']/60, results['convnext']['time_seconds']/60],
-            marker_color=['#3498db', '#2ecc71'],
+            marker_color=[COLOR_VGG16, COLOR_CONVNEXT],
             text=[f"{results['vgg16']['time_seconds']/60:.1f} min",
                   f"{results['convnext']['time_seconds']/60:.1f} min"],
             textposition='outside'
@@ -295,14 +299,14 @@ with col2:
         theta=categories,
         fill='toself',
         name='VGG16',
-        line_color='#3498db'
+        line_color=COLOR_VGG16
     ))
     fig_radar.add_trace(go.Scatterpolar(
         r=convnext_values,
         theta=categories,
         fill='toself',
         name='ConvNeXt-Tiny',
-        line_color='#2ecc71'
+        line_color=COLOR_CONVNEXT
     ))
     fig_radar.update_layout(
         polar=dict(radialaxis=dict(visible=True, range=[0, 100])),
